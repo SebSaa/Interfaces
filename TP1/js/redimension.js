@@ -20,10 +20,10 @@ document.querySelector('#inputFile').addEventListener('change', r => {
     img = new Image();         
     img.src = reader.result;         
     img.onload = function() {             
-      var escalar = img.width/canvas.width; 
-        canvas.width = this.width/escalar; 
+      var escalar = Math.floor(img.width/canvas.width); 
+        canvas.width = Math.floor(this.width/escalar); 
         ancho = canvas.width;
-        canvas.height = this.height/escalar; 
+        canvas.height = Math.floor(this.height/escalar); 
         alto = canvas.height
         ctx.drawImage(this, puntox, puntoy, ancho, alto); 
         var obtener = ctx.getImageData(0,0,canvas.width,canvas.height);
@@ -56,89 +56,95 @@ document.querySelector('#inputFile').addEventListener('change', r => {
   $("#blur").on("click",function(){
     blur();
   })
-  $("#otro").on("click",function(){
-    byn(canvas, ctx);
+  $("#binariouno").on("click",function(){
+    binariouno(canvas, ctx);
   })
 
 function getRed(imageData,x,y){
-  index = (x + y * imageData.width * 4);
+  index = (x + y * imageData.width) * 4;
   return imageData.data[index];
 }
 
 function getGreen(imageData,x,y){
-  index = (x + y * imageData.width * 4);
+  index = (x + y * imageData.width) * 4;
   return imageData.data[index+1];
 }
 
 function getBlue(imageData,x,y){
-  let index = (x + y * imageData.width * 4);
+  let index = (x + y * imageData.width) * 4;
   return imageData.data[index+2];
 }
 
 function setPixel (imageData,x,y,r,g,b,a){
-  let index = (x + y * imageData.width * 4);
+  let index = (x + y * imageData.width) * 4;
   imageData.data[index] = r;
   imageData.data[index+1] = g;
   imageData.data[index+2] = b;
   imageData.data[index+3] = a;
 }
 
-function byn(canvas, ctx){
-  var obtener = ctx.getImageData(0,0,canvas.width,canvas.height);
-     for (y=puntoy ; y < alto; y++){
-      for (x = puntox; x < ancho; x++) {
-        var bn = Math.floor(getRed(obtener,x,y) + getGreen(obtener,x,y) + getBlue(obtener,x,y)/3);
-        setPixel(obtener, x, y, bn, bn, bn, 255);
-      }
-    }
-    ctx.putImageData(obtener,0,0);
-}
-
 //BLUR
-
 function blur(){
-  console.log("llegue blur");
   var filtro=[[1,1,1],[1,1,1],[1,1,1]];
-  apFiltro(filtro,9)
+  apFiltro(filtro,9);
 }
 
 
 function apFiltro(filtro, n){
   var obtener = ctx.getImageData(0,0,canvas.width,canvas.height);
   var copia = obtener;
-  console.log(puntoy + puntox);
-  for (y=puntoy ; y < alto; y++){
-    for (x=puntox; x < ancho; x++) {
-      var red = Math.floor((getRed(copia,x-1,y-1) * filtro[0][0] + getRed(copia,x,y-1) * filtro[0][1] + getRed(copia,x+1,y+1) * filtro[0][2]+
+  console.log(canvas.width + " "  + canvas.height);
+  for (x=puntox+1; x < ancho-1; x++) {
+    for (y=puntoy+1 ; y < alto-1; y++){
+      var red = Math.floor((getRed(copia,x-1,y-1) * filtro[0][0] + getRed(copia,x,y-1) * filtro[0][1] + getRed(copia,x+1,y-1) * filtro[0][2]+
                             getRed(copia,x-1,y) * filtro[1][0] + getRed(copia,x,y) * filtro[1][1] + getRed(copia,x+1,y) * filtro[1][2] +
                             getRed(copia,x-1,y+1) * filtro[2][0] + getRed(copia,x,y+1) * filtro[2][1] + getRed(copia,x+1,y+1) * filtro[2][2]) / n);
-      var green = Math.floor((getGreen(copia,x-1,y-1) * filtro[0][0] + getGreen(copia,x,y-1) * filtro[0][1] + getGreen(copia,x+1,y+1) * filtro[0][2]+
+      var green = Math.floor((getGreen(copia,x-1,y-1) * filtro[0][0] + getGreen(copia,x,y-1) * filtro[0][1] + getGreen(copia,x+1,y-1) * filtro[0][2]+
                             getGreen(copia,x-1,y) * filtro[1][0] + getGreen(copia,x,y) * filtro[1][1] + getGreen(copia,x+1,y) * filtro[1][2] +
                             getGreen(copia,x-1,y+1) * filtro[2][0] + getGreen(copia,x,y+1) * filtro[2][1] + getGreen(copia,x+1,y+1) * filtro[2][2]) / n);
-      var blue = Math.floor((getBlue(copia,x-1,y-1) * filtro[0][0] + getBlue(copia,x,y-1) * filtro[0][1] + getBlue(copia,x+1,y+1) * filtro[0][2]+
+      var blue = Math.floor((getBlue(copia,x-1,y-1) * filtro[0][0] + getBlue(copia,x,y-1) * filtro[0][1] + getBlue(copia,x+1,y-1) * filtro[0][2]+
                             getBlue(copia,x-1,y) * filtro[1][0] + getBlue(copia,x,y) * filtro[1][1] + getBlue(copia,x+1,y) * filtro[1][2] +
                             getBlue(copia,x-1,y+1) * filtro[2][0] + getBlue(copia,x,y+1) * filtro[2][1] + getBlue(copia,x+1,y+1) * filtro[2][2]) / n);
       
 
-      setPixel(copia, x, y, red, green, blue, 255);
+      setPixel(copia , x, y, red, green, blue, 255);
     }
   }
+  
   ctx.putImageData(copia,0,0);
+  
 }
 
-
-//FALTA TERMINAR
-function binarizacion(canvas,ctx){
+function binario(filtro, n){
+  var limite = 127;
   var obtener = ctx.getImageData(0,0,canvas.width,canvas.height);
-  var copia = obtener.data;
-  let limite = 127;
-    for (var i=0 ; i < copia.length; i+=4){
-      copia[i] = 0.393 * copia[i] + 0.769 * copia[i+1] + 0.189 * copia[i+2];
-      copia[i+1] = 0.349 * copia[i] + 0.686 * copia[i+1] + 0.168 * copia[i+2];
-      copia[i+2] = 0.272 * copia[i] + 0.534 * copia[i+1] + 0.131 * copia[i+2];
+  var copia = obtener;
+  // console.log(copia.width);
+  // console.log(copia.height);
+  for (x=0 ; x < obtener.width ; x++) {
+    for (y=0 ; y < obtener.height ; y++){
+      var red = getRed(obtener, x, y);
+      var green = getGreen(obtener, x, y);
+      var blue = getBlue(obtener, x, y);
+      let suma = red + green + blue;
+      let color;
+
+      if (suma<limite) {
+        color = 0;
+      }else{
+        color = 255;
+      }
+      console.log("x " + x + " y " + y)
+      setPixel(obtener , x, y, color, color, color, 255);
+      
     }
-    ctx.putImageData(obtener,0,0);
+  }
+  
+  ctx.putImageData(obtener,0,0);
+  
 }
+
+
 
 function sepia(canvas, ctx){
     var obtener = ctx.getImageData(0,0,canvas.width,canvas.height);
@@ -160,6 +166,28 @@ function grises(canvas, ctx){
     copia[i] = prom;
     copia[i+1] = prom;
     copia[i+2] = prom;
+  }
+  ctx.putImageData(obtener,0,0);
+}
+
+function binariouno(canvas, ctx){
+  let limite = 127;
+  var obtener = ctx.getImageData(0,0,canvas.width,canvas.height);
+  var copia = obtener.data;
+  for (var i=0 ; i < copia.length; i+=4){
+    let suma = copia[i] + copia[i+1] + copia[i+2];
+    let color;
+
+    if (suma<limite) {
+      color = 0;
+    }else{
+      color = 255;
+    }
+
+    copia[i] = color;
+    copia[i+1] = color;
+    copia[i+2] = color;
+
   }
   ctx.putImageData(obtener,0,0);
 }
