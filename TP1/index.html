@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>clase1</title>
 </head>
@@ -10,24 +11,66 @@
 
 
 <body>
-    
-        Buscar archivo: <input type="file" id="inputFile" name="file">
-<div>
-    <canvas id="miCanvas" width="500" height="300" style="border: 1px solid black"></canvas>
-</div>
-<div>
-    <button id="inverso">cambio de color</button>
-    <button id="grises">grises</button>
-    <button id="sepia">sepia</button>
-    <button id="blur">blur</button>
-    <button id="binariouno">binariouno</button>
-    <a href="#" id="save" download="descarga.jpg">
-        <button type="button" class="" name="guardar">Guardar</button>
-    </a> 
-</div>
+    <div class="container-fluid">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputFile">
+            <label class="custom-file-label" for="inputFile">Cargar Imagen</label>
+          </div>
+        <!-- <div class="row">
+            Buscar archivo: <input type="file" id="inputFile" name="file">
+        </div>  -->
+        <div class="row justify-content-center align-items-center minh-100 mt-1">
+            <canvas id="miCanvas" width="300" height="200" style="border: 1px solid black"></canvas>
+        </div>
+        <div class="row justify-content-center align-items-center minh-100 mt-1">
+            <div class="col-auto">
+                <button id="lapiz" class="btn btn-primary btn-sm">lapiz</button>
+            </div>
+            <div class="col-auto">
+                <button id="goma" class="btn btn-primary btn-sm">goma</button>
+            </div>
+            <div class="col-auto">
+                <button id="restaurar" class="btn btn-primary btn-sm">restaurar</button>
+            </div>
+            <div class="col-auto">
+                <button id="limpiar" class="btn btn-primary btn-sm">limpiar</button>
+            </div>
+            <div class="col-auto">
+                <a href="#" id="save" download="descarga.jpg">
+                    <button type="button"  class="btn btn-primary btn-sm" name="guardar">Guardar</button>
+                </a>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center minh-100 mt-1">
+            <div class="col-auto">
+                <button id="inverso" class="btn btn-success btn-sm">cambio de color</button>
+            </div>
+            <div class="col-auto">
+                <button id="grises" class="btn btn-success btn-sm">grises</button>
+            </div>
+            <div class="col-auto">
+                <button id="sepia" class="btn btn-success btn-sm">sepia</button>
+            </div>
+            <div class="col-auto">
+                <button id="binario" class="btn btn-success btn-sm">binario</button>
+            </div>
+            <div class="col-auto">
+                <button id="blur" class="btn btn-success btn-sm">blur</button>
+            </div>
+            <div class="col-auto">
+                <button id="saturar" class="btn btn-success btn-sm">saturacion</button>
+            </div>
+            <div class="col-auto">
+                <button id="brillo" class="btn btn-success btn-sm">brillo</button>
+            </div>
+        </div>
+    </div>
     
 
-    <script src="js/redimension.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="js/filtros.js"></script>
 
 </body>
 </html>
