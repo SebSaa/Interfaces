@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var ancho;
   var alto;
   var original;
-  var masBlur = Boolean (false);
-  var masBril = Boolean (false);
+  var masBlur = false;
+  var masBril = false;
   
 
   document.querySelector('#inputFile').addEventListener('change', r => {     
@@ -24,13 +24,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
           ancho = canvas.width;
           alto = canvas.height;
           ctx.drawImage(this, puntox, puntoy, ancho, alto); 
-          //var obtener = ctx.getImageData(0,0,canvas.width,canvas.height);
           original = ctx.getImageData(0,0,canvas.width,canvas.height);   
       }     
     }, false); 
   });
-
-
 
     $("#restaurar").on("click",function(){
       restaurar();
@@ -146,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     restaurar();
     let limite = 127;
     let copia = ctx.getImageData(0,0,canvas.width,canvas.height);
-    //var copia = obtener;
     for (let x=0 ; x < copia.width ; x++) {
       for (let y=0 ; y < copia.height ; y++){
         let red = getRed(copia, x, y);
