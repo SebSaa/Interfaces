@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var ancho;
   var alto;
   var original;
+  var masBlur = Boolean (false);
+  var masBril = Boolean (false);
   
 
   document.querySelector('#inputFile').addEventListener('change', r => {     
@@ -56,8 +58,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
       sepia();
     });
     $("#blur").on("click",function(){
+      masBlur = false;
       blur();
     });
+    $("#blurMas").on("click",function(){
+      masBlur = true;
+      blur();
+    });    
     $("#binario").on("click",function(){
       binario();
     });
@@ -65,8 +72,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
       saturar();
     });
     $("#brillo").on("click",function(){
+      masBril = false;
       brillo();
     });
+    $("#brilloMas").on("click",function(){
+      masBril = true;
+      brillo();
+    });
+    
 
   function restaurar(){
     ctx.putImageData(original,0,0);
@@ -100,7 +113,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   //BLUR
   function blur(){
-    restaurar();
+    if (!masBlur) {
+      restaurar();
+    }
     var filtro=[[1,1,1],[1,1,1],[1,1,1]];
     apFiltro(filtro,9);
   }
@@ -195,7 +210,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function brillo(){
-    restaurar();
+    if (!masBril) {
+      restaurar();
+    }
     let copia = ctx.getImageData(0,0,canvas.width,canvas.height);
     const apBri = 30;
     for (let x=0 ; x < copia.width ; x++) {
@@ -270,10 +287,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
               g = getGreen(copia, x, y) + apBri;
               b = getBlue(copia, x, y) + apBri;
               dato = rgbToHsv(r, g, b);
-              dato = hsvToRgb(pixel.h, 1, pixel.v);
+              dato = hsvToRgb(dato.h, 1, dato.v);
 
 
-              setPixel(copia, x, y, pixel.r, pixel.g, pixel.b, 255);
+              setPixel(copia, x, y, dato.r, dato.g, dato.b, 255);
           }
       }
       ctx.putImageData(copia, 0, 0);
