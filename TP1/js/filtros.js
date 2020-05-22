@@ -69,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
   function restaurar(){
-    console.log(original);
     ctx.putImageData(original,0,0);
   }
   function limpiar(){
@@ -108,7 +107,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function apFiltro(filtro, n){
     let copia = ctx.getImageData(0,0,canvas.width,canvas.height);
-    //let copia = obtener;
     
     for (let x=puntox+1; x < ancho-1; x++) {
       for (let y=puntoy+1 ; y < alto-1; y++){
@@ -157,7 +155,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function sepia(){
     restaurar();
     var copia = ctx.getImageData(0,0,canvas.width,canvas.height);
-    //var copia = obtener;
     for (let x=0 ; x < copia.width ; x++) {
       for (let y=0 ; y < copia.height ; y++){
         let red = 0.393 * getRed(copia, x, y) + 0.769 * getGreen(copia, x, y) + 0.189 * getBlue(copia, x, y);
@@ -173,7 +170,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function grises(){
     restaurar();
     let copia = ctx.getImageData(0,0,canvas.width,canvas.height);
-    //var copia = obtener;
     for (let x=0 ; x < copia.width ; x++) {
       for (let y=0 ; y < copia.height ; y++){
         let prom = 0.34 * getRed(copia, x, y) + 0.5 * getGreen(copia,x,y) + 0.16 * getBlue(copia,x,y);
@@ -186,7 +182,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function invertir(){
     restaurar();
     var copia = ctx.getImageData(0,0,canvas.width,canvas.height);
-    //var copia = obtener;
     for (let x=0 ; x < copia.width ; x++) {
       for (let y=0 ; y < copia.height ; y++){
         let red = 255 - getRed(copia, x, y);
@@ -249,7 +244,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       color = "#FFFFFF";
     }
     if(dibujar){
-      console.log("estoy dibujando" + color)
       ctx.lineWidth = tamano;
       ctx.strokeStyle = color;
       ctx.lineTo(e.layerX, e.layerY);
@@ -262,8 +256,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       dibujar = false;
     }
 
-
-
     function saturar() {
       restaurar();
       let copia = ctx.getImageData(0,0,canvas.width,canvas.height);
@@ -271,25 +263,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
       let g = 0;
       let b = 0;
       const apBri = 30;
-      let pixel;
+      let dato;
       for (let x = 0; x < copia.width; x++) {
           for (let y = 0; y < copia.height; y++) {
               r = getRed(copia, x, y) + apBri;
               g = getGreen(copia, x, y) + apBri;
               b = getBlue(copia, x, y) + apBri;
-              //Convertir image de RGB a HSV (Hue,Saturation,Value)
-              pixel = rgbToHsv(r, g, b);
-              //Convertir image de HSV a RGB (aumentando el valor de la Saturacion)
-              pixel = hsvToRgb(pixel.h, 1, pixel.v);
+              dato = rgbToHsv(r, g, b);
+              dato = hsvToRgb(pixel.h, 1, pixel.v);
 
 
               setPixel(copia, x, y, pixel.r, pixel.g, pixel.b, 255);
           }
       }
-      //selectedTool.innerHTML = 'Saturacion'
-
       ctx.putImageData(copia, 0, 0);
-      console.log('saturacion');
   }
 
   function rgbToHsv(r, g, b) {
