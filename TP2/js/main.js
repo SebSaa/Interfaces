@@ -1,16 +1,16 @@
 let canvas = document.getElementById('canvas')
 let context = canvas.getContext('2d')
 
-let arrFichas = []
-let pictures = []
+let arrFichas = [];
+let pictures = [];
 
-canvas.width = canvas.offsetWidth
-canvas.height = canvas.offsetHeight
-let anchoTablero = (canvas.width /4) * 2
-let altoTablero = (70 * 6 ) + 20 
-let desdeTableroX = canvas.width/4
-let desdeTableroY = 120
-let alpha = 125
+canvas.width = canvas.offsetWidth;
+canvas.height = canvas.offsetHeight;
+let anchoTablero = (canvas.width /4) * 2;
+let altoTablero = (70 * 6 ) + 20; 
+let desdeTableroX = canvas.width/4;
+let desdeTableroY = 120;
+let alpha = 125;
 
 let tablero = new Tablero(desdeTableroX, desdeTableroY, anchoTablero, altoTablero, "green");
 
@@ -25,7 +25,7 @@ fichas(850,450,"#0000FF",23);
 
 function fichas(x, y, color, c){
     for (let i = 0; i < 126; i+=6) {
-        ficha = new Rect((x + Math.floor(Math.random()*15+1)), (y+i), 60, 6, color);
+        ficha = new Circle((x + Math.floor(Math.random()*15+1)), (y+i), 30, color);
         ficha.draw();
         arrFichas[c] = ficha;
         c++;
@@ -33,15 +33,16 @@ function fichas(x, y, color, c){
 }
 
 
-fichaR = new Circle(30,300,30, "#FF0000")
-fichaR.draw()
+
+fichaR = new Circle(30,300,30, "#FF0000");
+fichaR.draw();
 arrFichas[0]= fichaR;
-fichaA = new Circle(800,300,30, "#0000FF")
-fichaA.draw()
+fichaA = new Circle(800,300,30, "#0000FF");
+fichaA.draw();
 arrFichas[1]= fichaA;
 
 
-
+console.log(arrFichas);
 
 
 let dragging = false;
@@ -74,14 +75,15 @@ let draggingId = -1;
 
 
     function redraw(x, y) {
-        context.clearRect(0, 0, canvas.width, canvas.height);
 
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        tablero.dibujarTablero();
         for (let i = 0; i < arrFichas.length; i++) {
             if (draggingId !== i) {
                 arrFichas[i].draw();
             }
         }
-        tablero.dibujarTablero();
+        
 
         if (draggingId !== -1) {
             arrFichas[draggingId].draw();

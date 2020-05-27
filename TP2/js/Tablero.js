@@ -25,7 +25,6 @@ class Tablero {
              c++  
             } 
          }
-         console.log(arreglo);
     }
     
 

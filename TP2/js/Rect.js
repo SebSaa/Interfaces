@@ -28,5 +28,9 @@ class Rect extends Figure {
     getHeight() {
         return this.height
     }
-    
+    hit(x, y) {
+        let temp = false;
+        let m = Math.pow(x - this.posX, 2) + Math.pow(y - this.posY, 2);
+        return m < Math.pow(this.radio, 2);
+    }
 }

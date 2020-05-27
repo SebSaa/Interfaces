@@ -17,8 +17,14 @@ class Circle extends Figure {
         this.context.beginPath()
         this.context.arc(this.posX, this.posY, this.radio, 0, 2 * Math.PI)
         this.context.fillStyle = this.fill
-        this.context.fill()
+        this.context.fill();
+        this.context.lineWidth = 1;
+        this.context.lineCap = 'round';
+        this.context.strokeStyle = 'black';
+        this.context.stroke();
         this.context.closePath()
+        
+
     }
 
     getRadio() {
