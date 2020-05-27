@@ -1,0 +1,17 @@
+
+html,body { margin:0px; height:100%; 
+    background-color:rgba(43, 61, 66, 1); }
+
+.canvas {
+    box-shadow: 0px 0px 10px 1px black;
+    background-color:rgb(229, 229, 229, 1); 
+    margin-top:20px;
+    margin-right:auto; margin-left:auto;
+    display:block;
+    width:1000px; height:700px; } */
+
+.container {
+    justify-content:center; }
+
+#img1, #img2, #img3, #img4  {
+  display: none;  }
