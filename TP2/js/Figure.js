@@ -1,8 +1,8 @@
 class Figure {
-    constructor(posX, posY) {
+    constructor(posX, posY, color) {
         this.posX = posX
         this.posY = posY
-        this.fill = "#FFFFFF"
+        this.fill = color
         this.canvas = document.getElementById('canvas')
         this.context = this.canvas.getContext('2d')
     } 

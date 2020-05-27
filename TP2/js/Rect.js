@@ -1,7 +1,7 @@
 class Rect extends Figure {
     constructor(posX, posY, width, height, color) {
-        super(posX, posY)
-        this.color = color;
+        super(posX, posY, color)
+        //this.color = color;
         this.width = width
         this.height = height
         //this.context = super.getContext()
@@ -17,7 +17,7 @@ class Rect extends Figure {
     // }
 
     draw() {
-        this.context.fillStyle = this.color
+        this.context.fillStyle = this.fill;
         this.context.strokeRect(this.posX, this.posY, this.width, this.height)
         this.context.fillRect(this.posX, this.posY, this.width, this.height)
     }
@@ -27,12 +27,6 @@ class Rect extends Figure {
     }
     getHeight() {
         return this.height
-    }
-
-    hit(x, y) {
-        let temp = false;
-        let m = Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2);
-        return m < Math.pow(this.radius, 2);
     }
     
 }

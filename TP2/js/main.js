@@ -12,40 +12,40 @@ let desdeTableroX = canvas.width/4
 let desdeTableroY = 120
 let alpha = 125
 
-let tablero = new Tablero(desdeTableroX, desdeTableroY, anchoTablero, altoTablero, "green")
-fichas(90,450,"#FF0000")
-fichas(850,450,"#0000FF")
+let tablero = new Tablero(desdeTableroX, desdeTableroY, anchoTablero, altoTablero, "green");
+
+fichas(90,450,"#FF0000",2);
+fichas(850,450,"#0000FF",23);
+
+// setInterval(() => {
+//     fichas(90,450,"#FF0000");
+//     fichas(850,450,"#0000FF");  
+// }, 1000)
 
 
-function fichas(x, y, color){
-    let c=0;
+function fichas(x, y, color, c){
     for (let i = 0; i < 126; i+=6) {
-        ficha = new Rect(x + Math.floor(Math.random()*15+1),y+i,60,6,color)
-        ficha.draw()
+        ficha = new Rect((x + Math.floor(Math.random()*15+1)), (y+i), 60, 6, color);
+        ficha.draw();
         arrFichas[c] = ficha;
         c++;
     }
 }
-console.log(arrFichas)
-
-circulo = new Circle(30,300,30)
-circulo.draw()
-arrFichas[0]= circulo;
-console.log(arrFichas)
 
 
-// function drawFigures() {
-//     for (let i = 0; i < figures.length; i++) {
-//         figures[i].draw(context)
-//     }
-//     addRect()
-//     addCircle()
-// }
+fichaR = new Circle(30,300,30, "#FF0000")
+fichaR.draw()
+arrFichas[0]= fichaR;
+fichaA = new Circle(800,300,30, "#0000FF")
+fichaA.draw()
+arrFichas[1]= fichaA;
+
+
+
+
 
 let dragging = false;
 let draggingId = -1;
-
-
 
     canvas.addEventListener('mousedown', r => {
         dragging = true;
@@ -53,7 +53,7 @@ let draggingId = -1;
             let status = arrFichas[i].hit(r.layerX, r.layerY);
             if (status) {
                 draggingId = i;
-                console.log('le pegue');
+                //console.log('le pegue');
                 break;
             }
         }
@@ -81,6 +81,7 @@ let draggingId = -1;
                 arrFichas[i].draw();
             }
         }
+        tablero.dibujarTablero();
 
         if (draggingId !== -1) {
             arrFichas[draggingId].draw();
