@@ -36,78 +36,47 @@ class Tablero {
         for (let i = 0; i < this.arrTablero.length; i++) {
             this.arrTablero[i].draw(); 
         }
-        console.log(this.arrTablero);
+        // console.log(this.arrTablero);
     }
     
     setCol(col, color){
         console.log(color);
         let libre = false;
         if (col == 1){
-            for (let i = 5; i >= 0 ; i--) {
-                if(this.arrTablero[i].getFill() == '#FFFFFF'){
-                    this.arrTablero[i].setFill(color);
-                    libre = true;
-                    break;
-                }
-            }
+            libre = this.setColorColumna(0, 5, color, libre); 
         }
         if (col == 2){
-            for (let i = 11; i >= 6 ; i--) {
-                if(this.arrTablero[i].getFill() == '#FFFFFF'){
-                    this.arrTablero[i].setFill(color);
-                    libre = true;
-                    break;
-                }
-            }
+            libre = this.setColorColumna(6, 11, color, libre); 
         }
         if (col == 3){
-            for (let i = 17; i >= 12 ; i--) {
-                if(this.arrTablero[i].getFill() == '#FFFFFF'){
-                    this.arrTablero[i].setFill(color);
-                    libre = true;
-                    break;
-                }
-            }
+            libre = this.setColorColumna(12, 17, color, libre); 
         }
         if (col == 4){
-            for (let i = 23; i >= 18 ; i--) {
-                if(this.arrTablero[i].getFill() == '#FFFFFF'){
-                    this.arrTablero[i].setFill(color);
-                    libre = true;
-                    break;
-                }
-            }
+            libre = this.setColorColumna(18, 23, color, libre);
         }
         if (col == 5){
-            for (let i = 29; i >= 24 ; i--) {
-                if(this.arrTablero[i].getFill() == '#FFFFFF'){
-                    this.arrTablero[i].setFill(color);
-                    libre = true;
-                    break;
-                }
-            }
+            libre = this.setColorColumna(24, 29, color, libre);
         }
         if (col == 6){
-            for (let i = 35; i >= 30 ; i--) {
-                if(this.arrTablero[i].getFill() == '#FFFFFF'){
-                    this.arrTablero[i].setFill(color);
-                    libre = true;
-                    break;
-                }
-            }
+            libre = this.setColorColumna(30, 35, color, libre);
         }
         if (col == 7){
-            for (let i = 41; i >= 36 ; i--) {
-                if(this.arrTablero[i].getFill() == '#FFFFFF'){
-                    this.arrTablero[i].setFill(color);
-                    libre = true;
-                    break;
-                }
-            }
+            libre = this.setColorColumna(36, 41, color, libre);
         }
         this.redrawTablero();
         return libre;
     }
-
+    //deberia ser privada pero no se como 
+    setColorColumna(desde, hasta, color, libre) {
+        for (let i = hasta; i >= desde ; i--) {
+            if(this.arrTablero[i].getFill() == '#FFFFFF'){
+                this.arrTablero[i].setFill(color);
+                libre = true;
+                break;
+            }
+        }
+        return libre;
+    }
 
 }//fin clase
+

@@ -61,6 +61,15 @@ let draggingId = -1;
         }
     });
 
+    function fijarFichaColumna(col){
+        let cambio = tablero.setCol(col,fichaMovil.getFill());
+        if (cambio == true){
+            let a = arrFichas.indexOf(fichaMovil);
+            arrFichas.splice(a,1);
+            redraw();
+        }
+    }
+
     canvas.addEventListener('mouseup', r => {
         dragging = false;
         draggingId = -1;
@@ -68,61 +77,26 @@ let draggingId = -1;
         let solteY = r.layerY;
         
         if ((solteY > 50  && solteY < 120) && (solteX > 250 && solteX < 320)) {
-            let cambio = tablero.setCol(1,fichaMovil.getFill());
-            if (cambio == true){
-                let a = arrFichas.indexOf(fichaMovil);
-                arrFichas.splice(a,1);
-                redraw();
-            }
+            fijarFichaColumna(1);
         }
 
         if ((solteY > 50  && solteY < 120) && (solteX > 320 && solteX < 390)) {
-            let cambio = tablero.setCol(2,fichaMovil.getFill());
-            if (cambio == true){
-                let a = arrFichas.indexOf(fichaMovil);
-                arrFichas.splice(a,1);
-                redraw();
-            }
+            fijarFichaColumna(2);
         }
         if ((solteY > 50  && solteY < 120) && (solteX > 400 && solteX < 475)) {
-            let cambio = tablero.setCol(3,fichaMovil.getFill());
-            if (cambio == true){
-                let a = arrFichas.indexOf(fichaMovil);
-                arrFichas.splice(a,1);
-                redraw();
-            }
+            fijarFichaColumna(3);
         }
         if ((solteY > 50  && solteY < 120) && (solteX > 475 && solteX < 550)) {
-            let cambio = tablero.setCol(4,fichaMovil.getFill());
-            if (cambio == true){
-                let a = arrFichas.indexOf(fichaMovil);
-                arrFichas.splice(a,1);
-                redraw();
-            }
+            fijarFichaColumna(4);
         }
         if ((solteY > 50  && solteY < 120) && (solteX > 550 && solteX < 625)) {
-            let cambio = tablero.setCol(5,fichaMovil.getFill());
-            if (cambio == true){
-                let a = arrFichas.indexOf(fichaMovil);
-                arrFichas.splice(a,1);
-                redraw();
-            }
+            fijarFichaColumna(5);
         }
         if ((solteY > 50  && solteY < 120) && (solteX > 625 && solteX < 700)) {
-            let cambio = tablero.setCol(6,fichaMovil.getFill());
-            if (cambio == true){
-                let a = arrFichas.indexOf(fichaMovil);
-                arrFichas.splice(a,1);
-                redraw();
-            }
-        }
+            fijarFichaColumna(6);
+         }
         if ((solteY > 50  && solteY < 120) && (solteX > 700 && solteX < 775)) {
-            let cambio = tablero.setCol(7,fichaMovil.getFill());
-            if (cambio == true){
-                let a = arrFichas.indexOf(fichaMovil);
-                arrFichas.splice(a,1);
-                redraw();
-            }
+            fijarFichaColumna(7);
         }
     });
 
