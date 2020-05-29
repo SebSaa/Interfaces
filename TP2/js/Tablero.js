@@ -13,6 +13,7 @@ class Tablero {
     
     crearTablero(){
         let chupaFicha = new Rect(this.x, (this.y-70), this.ancho, 70, "#FF00FF");
+        console.log(this.x + "----------" + this.y + " ancho " +  this.ancho );
         chupaFicha.draw();
         this.tablero = new Rect(this.x, this.y, this.ancho, this.alto, this.color);
         this.tablero.draw();
