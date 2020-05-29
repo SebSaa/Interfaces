@@ -34,6 +34,12 @@ class Figure {
         return this.fill
     }
 
+    setFill(color){
+        console.log("color llegado " + color);
+        this.fill = color;
+        console.log("color cambiado " + this.fill);
+    }
+
     setPosition(x, y) {
         this.posX = x;
         this.posY = y;

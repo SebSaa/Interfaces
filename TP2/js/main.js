@@ -1,7 +1,7 @@
 let canvas = document.getElementById('canvas')
 let context = canvas.getContext('2d')
 
-let arrFichas = [];
+let arrFichas = new Array(42);
 let pictures = [];
 
 canvas.width = canvas.offsetWidth;
@@ -11,11 +11,12 @@ let altoTablero = (70 * 6 ) + 20;
 let desdeTableroX = canvas.width/4;
 let desdeTableroY = 120;
 let alpha = 125;
+let fichaMovil;
 
 let tablero = new Tablero(desdeTableroX, desdeTableroY, anchoTablero, altoTablero, "green");
 
-fichas(90,450,"#FF0000",2);
-fichas(850,450,"#0000FF",23);
+fichas(90,450,"#FF0000",0);
+fichas(850,450,"#0000FF",21);
 
 // setInterval(() => {
 //     fichas(90,450,"#FF0000");
@@ -34,15 +35,15 @@ function fichas(x, y, color, c){
 
 
 
-fichaR = new Circle(30,300,30, "#FF0000");
-fichaR.draw();
-arrFichas[0]= fichaR;
-fichaA = new Circle(800,300,30, "#0000FF");
-fichaA.draw();
-arrFichas[1]= fichaA;
+// fichaR = new Circle(30,300,30, "#FF0000");
+// fichaR.draw();
+// arrFichas[0]= fichaR;
+// fichaA = new Circle(800,300,30, "#0000FF");
+// fichaA.draw();
+// arrFichas[1]= fichaA;
 
 
-console.log(arrFichas);
+//console.log(arrFichas);
 
 
 let dragging = false;
@@ -54,7 +55,7 @@ let draggingId = -1;
             let status = arrFichas[i].hit(r.layerX, r.layerY);
             if (status) {
                 draggingId = i;
-                //console.log('le pegue');
+                fichaMovil = arrFichas[i];
                 break;
             }
         }
@@ -63,7 +64,71 @@ let draggingId = -1;
     canvas.addEventListener('mouseup', r => {
         dragging = false;
         draggingId = -1;
+        let solteX = r.layerX;
+        let solteY = r.layerY;
+        
+        if ((solteY > 50  && solteY < 120) && (solteX > 250 && solteX < 320)) {
+            let cambio = tablero.setCol(1,fichaMovil.getFill());
+            if (cambio == true){
+                let a = arrFichas.indexOf(fichaMovil);
+                arrFichas.splice(a,1);
+                redraw();
+            }
+        }
+
+        if ((solteY > 50  && solteY < 120) && (solteX > 320 && solteX < 390)) {
+            let cambio = tablero.setCol(2,fichaMovil.getFill());
+            if (cambio == true){
+                let a = arrFichas.indexOf(fichaMovil);
+                arrFichas.splice(a,1);
+                redraw();
+            }
+        }
+        if ((solteY > 50  && solteY < 120) && (solteX > 400 && solteX < 475)) {
+            let cambio = tablero.setCol(3,fichaMovil.getFill());
+            if (cambio == true){
+                let a = arrFichas.indexOf(fichaMovil);
+                arrFichas.splice(a,1);
+                redraw();
+            }
+        }
+        if ((solteY > 50  && solteY < 120) && (solteX > 475 && solteX < 550)) {
+            let cambio = tablero.setCol(4,fichaMovil.getFill());
+            if (cambio == true){
+                let a = arrFichas.indexOf(fichaMovil);
+                arrFichas.splice(a,1);
+                redraw();
+            }
+        }
+        if ((solteY > 50  && solteY < 120) && (solteX > 550 && solteX < 625)) {
+            let cambio = tablero.setCol(5,fichaMovil.getFill());
+            if (cambio == true){
+                let a = arrFichas.indexOf(fichaMovil);
+                arrFichas.splice(a,1);
+                redraw();
+            }
+        }
+        if ((solteY > 50  && solteY < 120) && (solteX > 625 && solteX < 700)) {
+            let cambio = tablero.setCol(6,fichaMovil.getFill());
+            if (cambio == true){
+                let a = arrFichas.indexOf(fichaMovil);
+                arrFichas.splice(a,1);
+                redraw();
+            }
+        }
+        if ((solteY > 50  && solteY < 120) && (solteX > 700 && solteX < 775)) {
+            let cambio = tablero.setCol(7,fichaMovil.getFill());
+            if (cambio == true){
+                let a = arrFichas.indexOf(fichaMovil);
+                arrFichas.splice(a,1);
+                redraw();
+            }
+        }
     });
+
+
+
+
 
     canvas.addEventListener('mousemove', r => {
         if (draggingId != -1) {
@@ -75,16 +140,14 @@ let draggingId = -1;
 
 
     function redraw(x, y) {
-
         context.clearRect(0, 0, canvas.width, canvas.height);
-        tablero.dibujarTablero();
+        tablero.redrawTablero();
         for (let i = 0; i < arrFichas.length; i++) {
             if (draggingId !== i) {
                 arrFichas[i].draw();
             }
         }
         
-
         if (draggingId !== -1) {
             arrFichas[draggingId].draw();
         }
