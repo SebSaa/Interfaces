@@ -13,7 +13,7 @@ let altoTablero = (70 * 6 ) + 20;
 let desdeTableroX = canvas.width/4;
 let desdeTableroY = 120;
 let alpha = 125;
-let fichaMovil;
+let fichaMovil = null;
 
 let tablero = new Tablero(desdeTableroX, desdeTableroY, anchoTablero, altoTablero, "green");
 
@@ -58,29 +58,38 @@ let draggingId = -1;
         draggingId = -1;
         let solteX = r.layerX;
         let solteY = r.layerY;
-        
-        if (solteY > 50  && solteY < 120){
-            if (solteX > 250 && solteX < 320) {
-                fijarFichaColumna(1);
+        if (fichaMovil != null){
+            if (solteY > 50  && solteY < 120){
+                if (solteX > 250 && solteX < 320) {
+                    fijarFichaColumna(1);
+                    tablero.comprobar(fichaMovil.getFill(), 5);
+                }
+                if (solteX > 320 && solteX < 390) {
+                    fijarFichaColumna(2);
+                    tablero.comprobar(fichaMovil.getFill(), 11);
+                }
+                if (solteX > 400 && solteX < 475) {
+                    fijarFichaColumna(3);
+                    tablero.comprobar(fichaMovil.getFill(), 17);
+                }
+                if (solteX > 475 && solteX < 550) {
+                    fijarFichaColumna(4);
+                    tablero.comprobar(fichaMovil.getFill(), 23);
+                }
+                if (solteX > 550 && solteX < 625) {
+                    fijarFichaColumna(5);
+                    tablero.comprobar(fichaMovil.getFill(), 29);
+                }
+                if (solteX > 625 && solteX < 700) {
+                    fijarFichaColumna(6);
+                    tablero.comprobar(fichaMovil.getFill(), 35);
+                 }
+                if (solteX > 700 && solteX < 775) {
+                    fijarFichaColumna(7);
+                    tablero.comprobar(fichaMovil.getFill(), 41);
+                }
             }
-            if (solteX > 320 && solteX < 390) {
-                fijarFichaColumna(2);
-            }
-            if (solteX > 400 && solteX < 475) {
-                fijarFichaColumna(3);
-            }
-            if (solteX > 475 && solteX < 550) {
-                fijarFichaColumna(4);
-            }
-            if (solteX > 550 && solteX < 625) {
-                fijarFichaColumna(5);
-            }
-            if (solteX > 625 && solteX < 700) {
-                fijarFichaColumna(6);
-             }
-            if (solteX > 700 && solteX < 775) {
-                fijarFichaColumna(7);
-            }
+            fichaMovil=null;
         }
     });
 
@@ -97,6 +106,7 @@ let draggingId = -1;
         for (let i = 0; i < arrFichas.length; i++) {
             if (draggingId !== i) {
                 arrFichas[i].draw();
+                
             }
         }
         
