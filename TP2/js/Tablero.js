@@ -1,5 +1,5 @@
 class Tablero {
-    constructor (startCanvasX, startCanvasY, widthCanvas, heightCanvas, color){
+    constructor (startCanvasX, startCanvasY, widthCanvas, heightCanvas, color, img, canvas, context){
         this.x = startCanvasX;
         this.y = startCanvasY;
         this.ancho = widthCanvas;
@@ -7,37 +7,34 @@ class Tablero {
         this.color = color;
         this.arrTablero = [];
         this.tablero;
-        this.crearTablero();
+        this.fondo = img;
+        this.canvas = canvas;
+        this.context = context;
     }
 
     
-    crearTablero(){
-        let chupaFicha = new Rect(this.x, (this.y-70), this.ancho, 70, "#FF00FF");
-        console.log(this.x + "----------" + this.y + " ancho " +  this.ancho );
-        chupaFicha.draw();
-        this.tablero = new Rect(this.x, this.y, this.ancho, this.alto, this.color);
-        this.tablero.draw();
+    crearTablero(imagenFicha){
+        this.context.drawImage(this.fondo, this.x, this.y, this.ancho, this.alto);
         let inicioX = 160;
         let inicioY = 290;
         let circulo;
         let c = 0;
         for (let i = 0; i < 490; i+=70) {
             for (let j = 0; j < 420; j+=70) {
-                 circulo = new Circle(inicioY+i, inicioX+j, 30, "#FFFFFF");
-             circulo.draw();
-             this.arrTablero[c]= circulo; 
-             c++;
+                circulo = new Circle(inicioY+i, inicioX+j, 30, "#FFFFFF",imagenFicha);
+                circulo.drawImage();
+                this.arrTablero[c]= circulo; 
+                c++;
             } 
          }
-         //console.log(arreglo);
     }
 
-    redrawTablero(){
-        this.tablero.draw();
+    redrawTablero(img){
+        this.context.drawImage(this.fondo, this.x, this.y, this.ancho, this.alto);
         for (let i = 0; i < this.arrTablero.length; i++) {
-            this.arrTablero[i].draw(); 
+            this.arrTablero[i].setImage(img);
+            this.arrTablero[i].drawImage(); 
         }
-        // console.log(this.arrTablero);
     }
     
     setCol(col, color){
@@ -66,12 +63,11 @@ class Tablero {
         this.redrawTablero();
         return libre;
     }
-    //deberia ser privada pero no se como 
+
     setColorColumna(desde, hasta, color, libre) {
         for (let i = hasta; i >= desde ; i--) {
             if(this.arrTablero[i].getFill() == '#FFFFFF'){
                 this.arrTablero[i].setFill(color);
-                //this.comprobar(color);
                 libre = true;
                 break;
             }
@@ -80,124 +76,85 @@ class Tablero {
     }
 
     comprobar(color, columna){
+        let ganador = false;
         let cont = 0;
-        console.log("aca te mando el color que paso a comprobar " + color);
-        
         for (let index = 0; index < this.arrTablero.length; index++) {
             if(this.arrTablero[index].getFill() == color){
                 for (let j = index; j < this.arrTablero.length; j+=6) {
                     //busca por derecha
                     if(this.arrTablero[j].getFill() == color){
-                        //console.log(" busco hacia la derecha " + index + " ---- " + cont);
                         cont++;
                         if(cont == 4){
-                            console.log("win");
+                            return (ganador = true);    
                         }
                     }else{
                         break;
                     }
                 }
+                    
                 cont = 0;
                 //busca por izquierda
                 for (let j = index; j >= 0 ; j-=6) {
                     if(this.arrTablero[j].getFill() == color){
-                        //console.log(" busco hacia la izquierda " + index + " ---- " + cont);
                         cont++;
                         if(cont == 4){
-                            console.log("win");
+                            return (ganador = true);                            
                         }
                     }else{
                         break;
                     }
                 }
-                cont = 0;
-                //busca por columna hacia arriba
-                for (let j = index; j >= 0 ; j--) {
-                    if(this.arrTablero[j].getFill() == color){
-                        //console.log(" busco hacia la izquierda " + index + " ---- " + cont);
-                        cont++;
-                        if(cont == 4){
-                            console.log("win");
-                        }
-                    }else{
-                        break;
-                    }
-                }
+
                 cont = 0;
                 //busca por columna hacia abajo
-                for (let j = index; j <= columna ; j++) {
-                    if(this.arrTablero[j].getFill() == color){
-                        //console.log(" busco hacia la izquierda " + index + " ---- " + cont);
-                        cont++;
-                        if(cont == 4){
-                            console.log("win");
+                let columnaAbajo =[0,6,12,18,24,30,36,1,7,13,19,25,31,37,2,8,14,20,26,32,38];
+                if (columnaAbajo.includes(index)){
+                    for (let j = index; j <= columna ; j++) {
+                        if(this.arrTablero[j].getFill() == color){
+                            cont++;
+                            if(cont == 4){
+                                return (ganador = true);                            
+                            }
+                        }else{
+                            break;
                         }
-                    }else{
-                        break;
                     }
                 }
+
                 cont = 0;
-                //busca por diagonal derecha arriba
-                for (let j = index; j < this.arrTablero.length ; j+=5) {
-                    if(this.arrTablero[j].getFill() == color){
-                        //console.log(" busco hacia la izquierda " + index + " ---- " + cont);
-                        cont++;
-                        if(cont == 4){
-                            console.log("win");
-                        }
-                    }else{
-                        break;
-                    }
-                }
-                cont = 0;
+                let columnaDiagDerAbajo =[0,1,2,6,7,8,12,13,14,18,19,20];
+                if (columnaDiagDerAbajo.includes(index)){
                 //busca por diagonal derecha abajo
-                for (let j = index; j < this.arrTablero.length ; j+=7) {
-                    if(this.arrTablero[j].getFill() == color){
-                        //console.log(" busco hacia la izquierda " + index + " ---- " + cont);
-                        cont++;
-                        if(cont == 4){
-                            console.log("win");
+                    for (let j = index; j < this.arrTablero.length ; j+=7) {
+                        if(this.arrTablero[j].getFill() == color){
+                            cont++;
+                            if(cont == 4){
+                                return (ganador = true);                            
+                            }
+                        }else{
+                            break;
                         }
-                    }else{
-                        break;
                     }
                 }
+                
                 cont = 0;
-                //busca por diagonal izquierda arriba
-                for (let j = index; j >= 0 ; j-=7) {
-                    if(this.arrTablero[j].getFill() == color){
-                        //console.log(" busco hacia la izquierda " + index + " ---- " + cont);
-                        cont++;
-                        if(cont == 4){
-                            console.log("win");
-                        }
-                    }else{
-                        break;
-                    }
-                }
-                cont = 0;
+                let columnaDiagIzqAbajo =[18,19,20,24,25,26,30,31,32,36,37,38];
+                if (columnaDiagIzqAbajo.includes(index)){
                 //busca por diagonal izquierda abajo
-                for (let j = index; j >= 0 ; j-=5) {
-                    if(this.arrTablero[j].getFill() == color){
-                        //console.log(" busco hacia la izquierda " + index + " ---- " + cont);
-                        cont++;
-                        if(cont == 4){
-                            console.log("win");
+                    for (let j = index; j >= 0 ; j-=5) {
+                        if(this.arrTablero[j].getFill() == color){
+                            cont++;
+                            if(cont == 4){
+                                return (ganador = true);                            
+                            }
+                        }else{
+                            break;
                         }
-                    }else{
-                        break;
                     }
                 }
                 cont = 0;
             }
-            
         }
-        
-        
-        
-
-
-
     }
 
 }//fin clase

@@ -1,18 +1,17 @@
 class Figure {
-    constructor(posX, posY, color) {
+    constructor(posX, posY, color, image) {
         this.posX = posX
         this.posY = posY
         this.fill = color
         this.canvas = document.getElementById('canvas')
         this.context = this.canvas.getContext('2d')
+        this.image = image;
     } 
   
-    // getContext() {    
-    //     let canvas = document.getElementById('canvas')
-    //     let context = canvas.getContext('2d')
-    //     return context
-    // }
-    
+    setImage(imagen){
+        this.image = imagen;
+    }
+
     fillIn(fill) {
         this.fill = fill
     }
@@ -35,9 +34,7 @@ class Figure {
     }
 
     setFill(color){
-        console.log("color llegado " + color);
         this.fill = color;
-        console.log("color cambiado " + this.fill);
     }
 
     setPosition(x, y) {
