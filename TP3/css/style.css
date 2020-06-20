@@ -134,6 +134,17 @@ button.skeuomorph-flat.active {
     animation: mover 1s steps(8) infinite; 
   }
 
+  .arbolDel {
+    z-index: 2;
+    position: absolute;
+    width: 294px;
+    height: 750px;
+    background: url('../images/fondo/plantaAlta1.png'); 
+    transform: scaleY(1.5);
+    bottom: 0px;
+    animation: moverArbDel 5s linear infinite; 
+  }
+
   .contieneObstaculo {
     z-index: 1;
     position: absolute;
@@ -163,11 +174,16 @@ button.skeuomorph-flat.active {
 
   .obstaculoSup {
     width: 80px;
-    height: 441px;
+    height:200px;
     background: url('../images/obs1.png'); 
     transform: rotate(180deg); 
     animation: animarObstaculo 1s steps(6) infinite; 
   }
+
+  @keyframes moverArbDel {
+    0% { left: 100vw;}
+    100% { left:-294px;}
+  }  
 
   @keyframes moverObstaculo {
     0% { left: 100vw;}
