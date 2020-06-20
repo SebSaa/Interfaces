@@ -1,0 +1,194 @@
+body {
+  padding: 0;
+  overflow: hidden;
+  margin:0;
+  background:#000;
+}
+
+button.skeuomorph-flat {
+  outline: none;
+  margin: 0;
+  border: 0;
+  border-radius: .25em;
+  background: #e0e0e0;
+  cursor: pointer;
+  padding: .4em .8em;
+  text-rendering: optimizeLegibility;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 300;
+  color: inherit;
+  box-shadow: 0 .2em #888;
+  -webkit-transform: translateY(-.2em);
+  -moz-transform: translateY(-.2em);
+  transform: translateY(-.2em)
+}
+
+button.skeuomorph-flat:hover,
+button.skeuomorph-flat.hover {
+  background: #e6e6e6
+}
+
+button.skeuomorph-flat:active,
+button.skeuomorph-flat.active {
+  box-shadow: none;
+  background: #e0e0e0;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  transform: translateY(0)
+}
+
+  .fondo11 {
+    background:url('../images/fondo/_11_background.png') repeat-x;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    animation: moverFondo 96s linear infinite;
+  }
+  .fondo10 {
+    background:url('../images/fondo/_10_distant_clouds.png') repeat-x;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    animation: moverFondo 78s linear infinite;
+  }
+  .fondo9 {
+    background:url('../images/fondo/_09_distant_clouds1.png') repeat-x;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    animation: moverFondo 70s linear infinite;
+  }
+  .fondo8 {
+    background:url('../images/fondo/_08_clouds.png') repeat-x;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    animation: moverFondo 62s linear infinite;
+  }
+  .fondo7 {
+    background:url('../images/fondo/_07_huge_clouds.png') repeat-x;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    animation: moverFondo 56s linear infinite;
+  }
+  .fondo6 {
+    background:url('../images/fondo/_06_hill2.png') repeat-x;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    animation: moverFondo 48s linear infinite;
+  }
+  .fondo5 {
+    background:url('../images/fondo/_05_hill1.png') repeat-x;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    animation: moverFondo 40s linear infinite;
+  }
+  .fondo4 {
+    background:url('../images/fondo/_04_bushes.png') repeat-x;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    animation: moverFondo 32s linear infinite;
+  }
+  .fondo3 {
+    background:url('../images/fondo/_03_distant_trees.png') repeat-x;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    animation: moverFondo 26s linear infinite;
+  }
+  .fondo2 {
+    background:url('../images/fondo/_02_trees\ and\ bushes.png') repeat-x;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    animation: moverFondo 18s linear infinite;
+  }
+  .fondo1 {
+    background:url('../images/fondo/_01_ground.png') repeat-x;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    animation: moverFondo 10s linear infinite;
+  } 
+
+  .contienePersonaje {
+    position: absolute;
+    width: 67px;
+    height: 72px;
+    bottom:100px;
+    display: flex;
+    justify-content: center;     
+    align-items: flex-end;
+    left: 300px;
+  }
+  .personaje {
+    width: 100%;
+    height: 100%;
+    align-self: flex-end;
+    background: url('../images/newPer.png'); 
+    animation: mover 1s steps(8) infinite; 
+  }
+
+  .contieneObstaculo {
+    z-index: 1;
+    position: absolute;
+    width: 80px;
+    height: 441px;
+    bottom: 0px;  
+    animation: moverObstaculo 10s linear infinite;
+  }
+
+  .obstaculo {
+    width: 80px;
+    height: 441px;
+    background: url('../images/obs1.png'); 
+    /* transform: scaleY(0.5); */
+    bottom: 0px;
+    animation: animarObstaculo 1s steps(6) infinite; 
+  }
+
+  .contieneObstaculoSup {
+    z-index: 1;
+    position: absolute;
+    width: 80px;
+    height: 441px;
+    top: 0px;  
+    animation: moverObstaculo 10s linear infinite;
+  }
+
+  .obstaculoSup {
+    width: 80px;
+    height: 441px;
+    background: url('../images/obs1.png'); 
+    transform: rotate(180deg); 
+    animation: animarObstaculo 1s steps(6) infinite; 
+  }
+
+  @keyframes moverObstaculo {
+    0% { left: 100vw;}
+    100% { left:-80px;}
+  }  
+
+  @keyframes animarObstaculo {
+    0% { background-position-x:0px;}
+    100% { background-position-x:-480px;}
+  }  
+
+  @keyframes mover {
+    0% { background-position-x:0px;
+       background-position-y:-72px; } 
+  100% { background-position-x:-537px;
+      background-position-y:-72px; }
+  }
+
+  @keyframes moverFondo {
+    /* 355 */
+    0% { background-position:100vw }
+    100% { background-position:0 }
+  }
+
