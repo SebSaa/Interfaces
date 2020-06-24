@@ -120,77 +120,77 @@ body {
 }
 
 .fondo11 {
-  background:url('../images/fondo/_11_background.png') repeat-x;
+  background:url('../images/fondo/11_background.png') repeat-x;
   width: 100vw;
   height: 100vh;
   background-size: cover;
   animation: moverFondo 96s linear infinite;
 }
 .fondo10 {
-  background:url('../images/fondo/_10_distant_clouds.png') repeat-x;
+  background:url('../images/fondo/10_distant_clouds.png') repeat-x;
   width: 100vw;
   height: 100vh;
   background-size: cover;
   animation: moverFondo 78s linear infinite;
 }
 .fondo9 {
-  background:url('../images/fondo/_09_distant_clouds1.png') repeat-x;
+  background:url('../images/fondo/09_distant_clouds1.png') repeat-x;
   width: 100vw;
   height: 100vh;
   background-size: cover;
   animation: moverFondo 70s linear infinite;
 }
 .fondo8 {
-  background:url('../images/fondo/_08_clouds.png') repeat-x;
+  background:url('../images/fondo/08_clouds.png') repeat-x;
   width: 100vw;
   height: 100vh;
   background-size: cover;
   animation: moverFondo 62s linear infinite;
 }
 .fondo7 {
-  background:url('../images/fondo/_07_huge_clouds.png') repeat-x;
+  background:url('../images/fondo/07_huge_clouds.png') repeat-x;
   width: 100vw;
   height: 100vh;
   background-size: cover;
   animation: moverFondo 56s linear infinite;
 }
 .fondo6 {
-  background:url('../images/fondo/_06_hill2.png') repeat-x;
+  background:url('../images/fondo/06_hill2.png') repeat-x;
   width: 100vw;
   height: 100vh;
   background-size: cover;
   animation: moverFondo 48s linear infinite;
 }
 .fondo5 {
-  background:url('../images/fondo/_05_hill1.png') repeat-x;
+  background:url('../images/fondo/05_hill1.png') repeat-x;
   width: 100vw;
   height: 100vh;
   background-size: cover;
   animation: moverFondo 40s linear infinite;
 }
 .fondo4 {
-  background:url('../images/fondo/_04_bushes.png') repeat-x;
+  background:url('../images/fondo/04_bushes.png') repeat-x;
   width: 100vw;
   height: 100vh;
   background-size: cover;
   animation: moverFondo 32s linear infinite;
 }
 .fondo3 {
-  background:url('../images/fondo/_03_distant_trees.png') repeat-x;
+  background:url('../images/fondo/03_distant_trees.png') repeat-x;
   width: 100vw;
   height: 100vh;
   background-size: cover;
   animation: moverFondo 26s linear infinite;
 }
 .fondo2 {
-  background:url('../images/fondo/_02_trees\ and\ bushes.png') repeat-x;
+  background:url('../images/fondo/02_trees\ and\ bushes.png') repeat-x;
   width: 100vw;
   height: 100vh;
   background-size: cover;
   animation: moverFondo 18s linear infinite;
 }
 .fondo1 {
-  background:url('../images/fondo/_01_ground.png') repeat-x;
+  background:url('../images/fondo/01_ground.png') repeat-x;
   width: 100vw;
   height: 100vh;
   background-size: cover;
@@ -293,7 +293,7 @@ body {
   z-index: 1;
   position: absolute;
   width: 80px;
-  height: 300px;
+  height: 200px;
   top: 0px; 
   transform: rotateZ(180deg) ;
 }
@@ -313,7 +313,7 @@ body {
   z-index: 1;
   position: absolute;
   width: 80px;
-  height: 500px;
+  height: 400px;
   bottom: 0px;  
 }
 
@@ -332,7 +332,7 @@ body {
   z-index: 1;
   position: absolute;
   width: 80px;
-  height: 300px;
+  height: 200px;
   bottom: 0px;  
 }
 
