@@ -5,7 +5,45 @@ body {
   background:#000;
 }
 
-button.skeuomorph-flat {
+.victoria {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.victoria p {
+  font-size: 5em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 300;
+  color: rebeccapurple;
+}
+
+
+
+.hide {
+  visibility: hidden;
+}
+
+.contieneBoton {
+  position: absolute;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.botonEfecto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 60px;
   outline: none;
   margin: 0;
   border: 0;
@@ -14,23 +52,21 @@ button.skeuomorph-flat {
   cursor: pointer;
   padding: .4em .8em;
   text-rendering: optimizeLegibility;
-  font-size: inherit;
-  font-family: inherit;
+  font-size: 3em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-weight: 300;
   color: inherit;
   box-shadow: 0 .2em #888;
   -webkit-transform: translateY(-.2em);
   -moz-transform: translateY(-.2em);
-  transform: translateY(-.2em)
+  transform: translateY(-.2em);
 }
 
-button.skeuomorph-flat:hover,
-button.skeuomorph-flat.hover {
+.botonEfecto:hover {
   background: #e6e6e6
 }
 
-button.skeuomorph-flat:active,
-button.skeuomorph-flat.active {
+.botonEfecto:active {
   box-shadow: none;
   background: #e0e0e0;
   -webkit-transform: translateY(0);
@@ -38,173 +74,307 @@ button.skeuomorph-flat.active {
   transform: translateY(0)
 }
 
-  .fondo11 {
-    background:url('../images/fondo/_11_background.png') repeat-x;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    animation: moverFondo 96s linear infinite;
-  }
-  .fondo10 {
-    background:url('../images/fondo/_10_distant_clouds.png') repeat-x;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    animation: moverFondo 78s linear infinite;
-  }
-  .fondo9 {
-    background:url('../images/fondo/_09_distant_clouds1.png') repeat-x;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    animation: moverFondo 70s linear infinite;
-  }
-  .fondo8 {
-    background:url('../images/fondo/_08_clouds.png') repeat-x;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    animation: moverFondo 62s linear infinite;
-  }
-  .fondo7 {
-    background:url('../images/fondo/_07_huge_clouds.png') repeat-x;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    animation: moverFondo 56s linear infinite;
-  }
-  .fondo6 {
-    background:url('../images/fondo/_06_hill2.png') repeat-x;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    animation: moverFondo 48s linear infinite;
-  }
-  .fondo5 {
-    background:url('../images/fondo/_05_hill1.png') repeat-x;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    animation: moverFondo 40s linear infinite;
-  }
-  .fondo4 {
-    background:url('../images/fondo/_04_bushes.png') repeat-x;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    animation: moverFondo 32s linear infinite;
-  }
-  .fondo3 {
-    background:url('../images/fondo/_03_distant_trees.png') repeat-x;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    animation: moverFondo 26s linear infinite;
-  }
-  .fondo2 {
-    background:url('../images/fondo/_02_trees\ and\ bushes.png') repeat-x;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    animation: moverFondo 18s linear infinite;
-  }
-  .fondo1 {
-    background:url('../images/fondo/_01_ground.png') repeat-x;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    animation: moverFondo 10s linear infinite;
-  } 
+.instrucciones {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 9px;
+  color: wheat;
+  opacity: 0.4;
+  background-color: olive;
+  border-radius: 30px;
+  text-rendering: optimizeLegibility;
+  font-size: 2em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 300;
+  font-size: large;
+  font-style: normal;
+  width: 200px;
+  height: auto;
+  top: 3px;
+  left: 3px;
+}
 
-  .contienePersonaje {
-    position: absolute;
-    width: 67px;
-    height: 72px;
-    bottom:100px;
-    display: flex;
-    justify-content: center;     
-    align-items: flex-end;
-    left: 300px;
-  }
-  .personaje {
-    width: 100%;
-    height: 100%;
-    align-self: flex-end;
-    background: url('../images/newPer.png'); 
-    animation: mover 1s steps(8) infinite; 
-  }
+.score {
+  border-radius: 20px;
+  position: absolute;
+  width: 200px;
+  height: auto;
+  color: white;
+  border: 1px solid black;
+  background-color: rgba(0, 255, 0, 0.3);
+  font-size: 2em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.3em;
+  font-style: bold;
+  padding: 5px;
+  top: 3px;
+  right: 3px;
+}
 
-  .arbolDel {
-    z-index: 2;
-    position: absolute;
-    width: 294px;
-    height: 750px;
-    background: url('../images/fondo/plantaAlta1.png'); 
-    transform: scaleY(1.5);
-    bottom: 0px;
-    animation: moverArbDel 5s linear infinite; 
-  }
+.puntaje {
+  width: 200px;
+  height: auto;
+}
 
-  .contieneObstaculo {
-    z-index: 1;
-    position: absolute;
-    width: 80px;
-    height: 441px;
-    bottom: 0px;  
-    animation: moverObstaculo 10s linear infinite;
-  }
+.fondo11 {
+  background:url('../images/fondo/_11_background.png') repeat-x;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  animation: moverFondo 96s linear infinite;
+}
+.fondo10 {
+  background:url('../images/fondo/_10_distant_clouds.png') repeat-x;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  animation: moverFondo 78s linear infinite;
+}
+.fondo9 {
+  background:url('../images/fondo/_09_distant_clouds1.png') repeat-x;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  animation: moverFondo 70s linear infinite;
+}
+.fondo8 {
+  background:url('../images/fondo/_08_clouds.png') repeat-x;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  animation: moverFondo 62s linear infinite;
+}
+.fondo7 {
+  background:url('../images/fondo/_07_huge_clouds.png') repeat-x;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  animation: moverFondo 56s linear infinite;
+}
+.fondo6 {
+  background:url('../images/fondo/_06_hill2.png') repeat-x;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  animation: moverFondo 48s linear infinite;
+}
+.fondo5 {
+  background:url('../images/fondo/_05_hill1.png') repeat-x;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  animation: moverFondo 40s linear infinite;
+}
+.fondo4 {
+  background:url('../images/fondo/_04_bushes.png') repeat-x;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  animation: moverFondo 32s linear infinite;
+}
+.fondo3 {
+  background:url('../images/fondo/_03_distant_trees.png') repeat-x;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  animation: moverFondo 26s linear infinite;
+}
+.fondo2 {
+  background:url('../images/fondo/_02_trees\ and\ bushes.png') repeat-x;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  animation: moverFondo 18s linear infinite;
+}
+.fondo1 {
+  background:url('../images/fondo/_01_ground.png') repeat-x;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  animation: moverFondo 10s linear infinite;
+} 
 
-  .obstaculo {
-    width: 80px;
-    height: 441px;
-    background: url('../images/obs1.png'); 
-    /* transform: scaleY(0.5); */
-    bottom: 0px;
-    animation: animarObstaculo 1s steps(6) infinite; 
-  }
+.contienePersonaje {
+  position: absolute;
+  width: 67px;
+  height: 72px;
+  bottom:100px;
+  top: 350px;
+  left: 300px;
+}
 
-  .contieneObstaculoSup {
-    z-index: 1;
-    position: absolute;
-    width: 80px;
-    height: 441px;
-    top: 0px;  
-    animation: moverObstaculo 10s linear infinite;
-  }
+.personajeNormal {
+  width: 100%;
+  height: 100%;
+  background: url('../images/newPer.png'); 
+  animation: mover 1s steps(8) infinite; 
+}
 
-  .obstaculoSup {
-    width: 80px;
-    height:200px;
-    background: url('../images/obs1.png'); 
-    transform: rotate(180deg); 
-    animation: animarObstaculo 1s steps(6) infinite; 
-  }
+.personajeMuere {
+  width: 100%;
+  height: 100%;
+  background: url('../images/perdi.png'); 
+  
+}
+ 
+.kill {
+  animation: kill 5s linear;
+  animation-fill-mode: forwards;
+}
 
-  @keyframes moverArbDel {
-    0% { left: 100vw;}
-    100% { left:-294px;}
-  }  
+.contieneBonus {
+  position: absolute;
+  z-index: 1;
+  top: 50px;
+  left: 100vw;
+}
 
-  @keyframes moverObstaculo {
-    0% { left: 100vw;}
-    100% { left:-80px;}
-  }  
+.moverBonus {
+  animation: moverBonus 1s infinite linear;
+  animation-delay: 2s; 
+}
 
-  @keyframes animarObstaculo {
-    0% { background-position-x:0px;}
-    100% { background-position-x:-480px;}
-  }  
+@keyframes moverBonus {
+  100% { left:-62px;}
+}
 
-  @keyframes mover {
-    0% { background-position-x:0px;
-       background-position-y:-72px; } 
-  100% { background-position-x:-537px;
-      background-position-y:-72px; }
-  }
+.bonus {
+   width: 51px;
+   height: 62px;
+   background-image: url('../images/bonus.png');
+   animation: animarBonus 2s linear infinite;
+ }
 
-  @keyframes moverFondo {
-    /* 355 */
-    0% { background-position:100vw }
-    100% { background-position:0 }
-  }
+ @keyframes animarBonus {
+  0% {transform: rotateX(45deg)}
+  100% {transform: rotateX(-45deg);}
+}
+
+.arbolDel {
+  z-index: 2;
+  position: absolute;
+  width: 294px;
+  height: 750px;
+  background: url('../images/fondo/plantaAlta1.png'); 
+  transform: scaleY(1.5);
+  bottom: 0px;
+  animation: moverArbDel 5s linear infinite; 
+}
+
+.moverObstaculo {
+  animation: moverObstaculo 10s linear infinite;
+  animation-delay: 0s;
+}
+
+.contieneObstaculo0 {
+  z-index: 1;
+  position: absolute;
+  width: 80px;
+  height: 200px;
+  bottom: 0px;  
+  left: 100vw;
+}
+
+.obstaculo {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('../images/obs2.png') no-repeat; 
+  bottom: 0px;
+  animation: animarObstaculo 1s steps(6) infinite; 
+}
+
+.contieneObstaculoSup0 {
+  left: 100vw;
+  z-index: 1;
+  position: absolute;
+  width: 80px;
+  height: 300px;
+  top: 0px; 
+  transform: rotateZ(180deg) ;
+}
+
+.obstaculoSup {
+  z-index: 1;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height:100%;
+  background: url('../images/obs2.png'); 
+  animation: animarObstaculo 1s steps(6) infinite; 
+}
+
+.contieneObstaculo1 {
+  left: 100vw;
+  z-index: 1;
+  position: absolute;
+  width: 80px;
+  height: 500px;
+  bottom: 0px;  
+}
+
+.contieneObstaculoSup1 {
+  left: 100vw;
+  z-index: 1;
+  position: absolute;
+  width: 80px;
+  height: 100px;
+  top: 0px; 
+  transform: rotateZ(180deg) ;
+}
+
+.contieneObstaculo2 {
+  left: 100vw;
+  z-index: 1;
+  position: absolute;
+  width: 80px;
+  height: 300px;
+  bottom: 0px;  
+}
+
+.contieneObstaculoSup2 {
+  left: 100vw;
+  z-index: 1;
+  position: absolute;
+  width: 80px;
+  height: 200px;
+  top: 0px; 
+  transform: rotateZ(180deg) ;
+}
+
+@keyframes kill {  
+  100% {top: 92vh;}
+}
+
+@keyframes moverArbDel {
+  0% { left: 100vw;}
+  100% { left:-294px;}
+}  
+
+@keyframes moverObstaculo {
+  0% { left: 100vw;}
+  100% { left:-80px;}
+}  
+
+@keyframes animarObstaculo {
+  0% { background-position-x:0px;}
+  100% { background-position-x:-480px;}
+}  
+
+@keyframes mover {
+  0% { background-position-x:0px;
+      background-position-y:-72px; } 
+100% { background-position-x:-537px;
+    background-position-y:-72px; }
+}
+
+@keyframes moverFondo {
+  /* 355 */
+  0% { background-position:100vw }
+  100% { background-position:0 }
+}
 

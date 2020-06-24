@@ -7,8 +7,27 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="contieneBoton">
+  <a class="botonEfecto">Start</a>
+</div>
+<div class="instrucciones"><p>El juego consiste en pasar el personaje por el espacio permitido sin tocar el fuego, el ave cae de manera constante, 
+  para impulsarla se utiliza flecha arriba. Para ganar debe acumular 10000 puntos o atrapar el girasol!!
+</p></div>
+<div class="score">
+  <div class="puntaje"><p>Puntos: <span class="spanScore"> 0 </span></p></div> 
+  <div class="puntaje"><p>Record: <span class="spanBestScore"> 0 </span></p></div>  
+</div>
 
-   
+<div class="contieneBoton restart hide">
+  <a class="botonEfecto restart">Restart</a>
+</div>
+
+<div class="victoria hide">
+  <p>WIN</p>
+</div>
+  
+
+
     <div class="fondo11">
       <div class="fondo10">
         <div class="fondo9">
@@ -33,21 +52,40 @@
       </div>
     </div>  
     <div class="arbolDel"></div>
+    <div class="contieneBonus hide">
+      <div class="bonus">
+    </div>
+
+    </div>
+
     <div class="contienePersonaje">
       <div class="personaje"></div>
     </div>
-    <div class="contieneObstaculo">
+
+    <div class="contieneObstaculo0">
       <div class="obstaculo"></div>
     </div>
-    <div class="contieneObstaculoSup">
+    <div class="contieneObstaculoSup0">
+      <div class="obstaculoSup"></div>
+    </div>
+    <div class="contieneObstaculo1">
+      <div class="obstaculo"></div>
+    </div>
+    <div class="contieneObstaculoSup1">
+      <div class="obstaculoSup"></div>
+    </div>
+    <div class="contieneObstaculo2">
+      <div class="obstaculo"></div>
+    </div>
+    <div class="contieneObstaculoSup2">
       <div class="obstaculoSup"></div>
     </div>
 
-    <button class="skeuomorph-flat">Start</button>
+    
 
 
-
-
+    <script src="js/Bonus.js"></script>
+    <script src="js/Obstaculo.js"></script>
     <script src="js/Player.js"></script>
     <script src="js/Game.js"></script>
     <script src="js/js.js"></script>
