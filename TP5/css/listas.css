@@ -1,0 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    background: #89BCC9;
+    }
+
+.canciones {
+    width: 100vh;
+    background: gray;
+}
